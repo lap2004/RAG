@@ -1,0 +1,13 @@
+
+fastapi
+uvicorn[standard]
+streamlit
+langchain
+langchain-community
+chromadb
+google-generativeai
+sentence-transformers
+python-dotenv
+requests
+tqdm
+ipykernel
