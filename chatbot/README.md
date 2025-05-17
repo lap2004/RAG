@@ -1,4 +1,26 @@
-<pre lang="md"> ## 📁 Cấu trúc dự án <code> chatbot/ ├── backend/ # Backend FastAPI + RAG + LangChain │ ├── api.py # FastAPI app và các route /chat,... │ ├── rag/ │ │ ├── retriever.py # Dùng LangChain + ChromaDB để truy vấn dữ liệu │ │ ├── gemini_api.py # Gọi Gemini API (Google Generative AI) │ │ ├── prompt_template.py # Prompt template cho RAG │ │ └── __init__.py │ ├── config.py # Load biến môi trường (.env) │ ├── data/ │ │ └── data_update.json # Dữ liệu tư vấn tuyển sinh │ └── utils/ │ ├── word_filter.json # data word filter │ └── word_filter.py # Lọc từ cấm ├── chroma_db/ # Vector DB tạo tự động (Chroma) ├── scripts/ │ └── vector_db.py # Tạo embedding từ JSON và lưu vào ChromaDB ├── frontend/ │ └── app.py # Giao diện Streamlit chat ├── .env # API Key & cấu hình ├── requirements.txt # Thư viện cần cài (Gemini, LangChain,...) ├── README.md # Hướng dẫn sử dụng └── main.py # Điểm khởi chạy FastAPI </code> </pre>
+chatbot/
+├── backend/                         # Backend FastAPI + RAG + LangChain
+│   ├── api.py                       # FastAPI app và các route /chat,...
+│   ├── rag/                         # Module truy vấn và gọi Gemini
+│   │   ├── retriever.py             # Truy vấn văn bản từ ChromaDB bằng LangChain
+│   │   ├── gemini_api.py            # Gọi Gemini API để sinh câu trả lời
+│   │   ├── prompt_template.py       # Prompt template cho RAG
+│   │   └── __init__.py
+│   ├── config.py                    # Load cấu hình từ file .env
+│   ├── data/                        # Dữ liệu JSON gốc
+│   │   └── data_update.json         # Dữ liệu tư vấn tuyển sinh
+│   └── utils/                       
+│       ├── word_filter.json         # Danh sách từ cấm
+│       └── word_filter.py           # Hàm xử lý lọc từ cấm
+├── chroma_db/                       # Vector database tạo bởi Chroma (tự động)
+├── scripts/
+│   └── vector_db.py                 # Script tạo embedding và lưu vào ChromaDB
+├── frontend/
+│   └── app.py                       # Giao diện người dùng bằng Streamlit
+├── .env                             # Thông tin cấu hình và API key
+├── requirements.txt                 # Danh sách thư viện cần cài đặt
+├── README.md                        # Tài liệu hướng dẫn sử dụng
+└── main.py                          # Điểm khởi chạy FastAPI
 ## công nghệ sử dụng
 
 - LLM: Gemini 2.0 Flash (Google Generative AI)
@@ -33,7 +55,7 @@ uvicorn backend.api:app --reload --port 8000
 ```
 truy cập vào http://127.0.0.1:8000/docs và test trên FastAPI nhanh hơn 
 
-7. Chạy giao diện chatbot
+6. Chạy giao diện chatbot
 ```python
 streamlit run frontend/app.py
 ```
