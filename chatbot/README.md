@@ -13,8 +13,7 @@
 pip install -r requirements.txt
 ```
 2. Cấu hình .env
-1. Tạo file `.env`
-2. Thêm API key vào file .env:
+3. Thêm API key vào file .env:
   - GEMINI_API_KEY=your_gemini_api_key
   - GEMINI_MODEL=models/gemini-2.0-flash
   - DATA_PATH=data/data_20250515.json
